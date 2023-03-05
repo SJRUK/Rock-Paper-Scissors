@@ -14,3 +14,5 @@ let compSelection = compChoices[Math.floor(Math.random() * compChoices.length)];
 return compSelection;
 
 }
+
+console.log("Computer chooses: " + getComputerChoice(compChoices));
