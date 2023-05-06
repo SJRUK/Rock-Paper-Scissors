@@ -10,27 +10,48 @@ return compSelection;
 }
 
 
-function getPlayerChoice(Choice){
+/*function getPlayerChoice(Choice){
     
 let playerChoice = prompt("Please make your choice: rock, paper or scissors");
 
 let playerSelection = playerChoice.toLowerCase();
 return playerSelection;
-}
+}*/
 
+/* Rock */
+const rock = document.querySelector('#rock');
+
+rock.addEventListener('click', () => {
+  playRound(computersGo, "rock");
+});
+
+/* Paper */
+const paper = document.querySelector('#paper');
+
+paper.addEventListener('click', () => {
+  playRound(computersGo, "paper");
+});
+
+/* Scissors */
+
+const scissors = document.querySelector('#scissors');
+
+scissors.addEventListener('click', () => {
+  playRound(computersGo, "scissors");
+});
 
 let computersGo;
-let playersGo;
+//let playersGo;//
 
 function playRound(computersGo, playersGo){
   computersGo = getComputerChoice();
-  playersGo = getPlayerChoice();
+  
     let VS = "Player: " + playersGo + " VS " + computersGo + " :Computer";
     console.log(VS);
        if (computersGo === playersGo){
         pWin = false;
         cWin = false;
-        return "It's a draw!";
+        console.log("It's a draw!");
        }
        else if (computersGo === "rock" && playersGo === "paper") {
             pWin = true;
@@ -75,7 +96,7 @@ let computerScore = 0;
 let pWin = new Boolean(false);
 let cWin = new Boolean(false);
 
-function game() {
+/*function game() {
     let gamesPlayed = 0;
     
     while (gamesPlayed < 5){
@@ -100,7 +121,7 @@ function game() {
    }
 }}
 
-console.log(game());
+console.log(game()); */
 
 
 
