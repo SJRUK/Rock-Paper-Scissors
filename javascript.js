@@ -39,11 +39,16 @@ let playerScore = 0;
 
 const container2 = document.querySelector('.container2');
 
+const versus = document.createElement('p');
+container2.appendChild(versus);
+
 const result = document.querySelector('#result');
 container2.appendChild(result);
 
 const score = document.createElement('h3');
 container2.appendChild(score);
+
+
 
 
 function playRound(computersGo, playersGo){
@@ -53,8 +58,8 @@ function playRound(computersGo, playersGo){
   result.textContent = "Result:";
   
   
-    let VS = "Player: " + playersGo + " VS " + computersGo + " :Computer";
-    console.log(VS);
+    versus.textContent = "(Player) " + playersGo + " VS " + computersGo + " (Computer)";
+    console.log(versus);
 
 
        if (computersGo === playersGo){
