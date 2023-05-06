@@ -9,15 +9,7 @@ let compSelection = compChoices[Math.floor(Math.random() * compChoices.length)];
 return compSelection;
 }
 
-
-/*function getPlayerChoice(Choice){
-    
-let playerChoice = prompt("Please make your choice: rock, paper or scissors");
-
-let playerSelection = playerChoice.toLowerCase();
-return playerSelection;
-}*/
-
+/* Buttons to get Player's selection */
 /* Rock */
 const rock = document.querySelector('#rock');
 
@@ -33,108 +25,124 @@ paper.addEventListener('click', () => {
 });
 
 /* Scissors */
-
 const scissors = document.querySelector('#scissors');
-
 scissors.addEventListener('click', () => {
   playRound(computersGo, "scissors");
 });
 
+
 let computersGo;
 //let playersGo;//
 
+let computerScore = 0;
+let playerScore = 0;
+
+const container2 = document.querySelector('.container2');
+
+const result = document.querySelector('#result');
+container2.appendChild(result);
+
+const score = document.createElement('h3');
+container2.appendChild(score);
+
+
 function playRound(computersGo, playersGo){
   computersGo = getComputerChoice();
+
+  
+  result.textContent = "Result:";
+  
   
     let VS = "Player: " + playersGo + " VS " + computersGo + " :Computer";
     console.log(VS);
+
+
        if (computersGo === playersGo){
         pWin = false;
-        cWin = false;
-        console.log("It's a draw!");
+        cWin = false; 
+        const draw = document.createElement('p');
+        draw.classList.add('draw');
+        draw.textContent = "It's a draw!";
+        result.appendChild(draw);
+        playerScore++;
+        computerScore++;
+        score.textContent = "Player's Score = " + playerScore + " Computer's Score = " + computerScore;
        }
        else if (computersGo === "rock" && playersGo === "paper") {
-            pWin = true;
-            cWin =false;
-            return "Player wins - rock beats paper!";
-       }
+        const pWin = document.createElement('p');
+        pWin.classList.add('pWin');
+        pWin.textContent = "Player wins!";
+        result.appendChild(pWin);
+        playerScore++;
+        score.textContent = "Player's Score = " + playerScore + " Computer's Score = " + computerScore;
+
+        }
         else if (computersGo === "paper" && playersGo === "rock") {
-            cWin = true;
-            pWin = false;
-            return "Computer wins - paper beats rock!";
+          const cWin = document.createElement('p');
+          cWin.classList.add('pWin');
+          cWin.textContent = "Computer wins!";
+          result.appendChild(cWin);
+          computerScore++;
+          score.textContent = "Player's Score = " + playerScore + " Computer's Score = " + computerScore;
         }
         else if (computersGo === "scissors" && playersGo === "rock") {
-            pWin = true;
-            cWin =false;
-            return "Player wins - rock beats scissors!";
+          const pWin = document.createElement('p');
+          pWin.classList.add('pWin');
+          pWin.textContent = "Player wins!";
+          result.appendChild(pWin);
+          playerScore++;
+          score.textContent = "Player's Score = " + playerScore + " Computer's Score = " + computerScore;
         }
-          else if (computersGo === "rock" && playersGo === "scissors") {
-            cWin = true;
-            pWin = false;
-            return "Computer wins - rock beats scissors!"; 
+        else if (computersGo === "rock" && playersGo === "scissors") {
+          const cWin = document.createElement('p');
+          cWin.classList.add('pWin');
+          cWin.textContent = "Computer wins!";
+          result.appendChild(cWin);
+          computerScore++;
+          score.textContent = "Player's Score = " + playerScore + " Computer's Score = " + computerScore;
         }
         else if (computersGo === "paper" && playersGo === "scissors") {
-            pWin = true;
-            cWin =false;
-            return "Player wins - scissors beats paper!";
+          const pWin = document.createElement('p');
+          pWin.classList.add('pWin');
+          pWin.textContent = "Player wins!";
+          result.appendChild(pWin);
+          playerScore++;
+          score.textContent = "Player's Score = " + playerScore + " Computer's Score = " + computerScore;
           }
           else if (computersGo === "scissors" && playersGo === "paper") {
-            cWin = true;
-            pWin = false;
-            return "Computer wins - scissors beats paper!";
+            const cWin = document.createElement('p');
+            cWin.classList.add('pWin');
+            cWin.textContent = "Computer wins!";
+            result.appendChild(cWin);
+            computerScore++;
+            score.textContent = "Player's Score = " + playerScore + " Computer's Score = " + computerScore;
           }  
-          else {
-            pWin = false;
-            cWin = false;
-            return "You did not choose rock, paper or scissors! Please try again.";
-          }
+      if (playerScore >= 5 && computerScore < 5)
+      {
+        const pWinner = document.createElement('h2');
+        pWinner.classList.add('pWinner');
+        pWinner.textContent = "Player wins the game!";
+        container2.appendChild(pWinner);  
+      }    
+
+      if (computerScore >= 5 && playerScore < 5)
+      {
+        const cWinner = document.createElement('h2');
+        cWinner.classList.add('cWinner');
+        cWinner.textContent = "Computer wins the game!";
+        container2.appendChild(cWinner);  
+      }    
+
+      if (computerScore == 5 && playerScore == 5)
+      {
+        const aDraw = document.createElement('h2');
+        aDraw.classList.add('aDraw');
+        aDraw.textContent = "It's a draw - no-one wins!";
+        container2.appendChild(aDraw);  
+      }    
+
+
+
     }
         
-let playerScore = 0;
-let computerScore = 0;
 
-let pWin = new Boolean(false);
-let cWin = new Boolean(false);
-
-/*function game() {
-    let gamesPlayed = 0;
-    
-    while (gamesPlayed < 5){
-        (playRound(computersGo, playersGo));
-
-    if (pWin){
-    playerScore++;
-    console.log("PLAYER WINS THIS ROUND! Player " + playerScore + " Vs " + computerScore + " Computer");
-    }
-    else if (cWin) {
-    computerScore++;
-    console.log("COMPUTER WINS THIS ROUND! Player " + playerScore + " Vs " + computerScore + " Computer");
-    }
-    else {
-      console.log("This round is a draw!" + " Player " + playerScore + " Vs " + computerScore + " Computer")
-    }
-    
-  gamesPlayed++;
-
-  if (gamesPlayed >= 5) {
-    console.log("Game Over!" + " Player " + playerScore + " Vs " + computerScore + " Computer");
-   }
-}}
-
-console.log(game()); */
-
-
-
-
-
-
-
-/*
-if (playerSelection == "rock" || "paper" || "scissors"){
-
-console.log("You choose: " + playerSelection);
-return playerSelection;
-}
-else {
-    console.log("That was not rock, paper or scissors!");} 
-*/
