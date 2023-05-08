@@ -1,3 +1,3 @@
 # Rock-Paper-Scissors
 
-First attempt at a Rock, Paper, Scissors game, played in the browser console Vs the computer.
+First attempt at JavaScript game - Rock, Paper, Scissors.
