@@ -53,6 +53,7 @@ function reloadPage()
 location.reload();
 }
 
+let round = 0;
 
 function playRound(computersGo, playersGo){
   
@@ -60,6 +61,7 @@ function playRound(computersGo, playersGo){
   
   computersGo = getComputerChoice();
 
+  round++;
   
   result.textContent = "Result:";
   
@@ -68,13 +70,11 @@ function playRound(computersGo, playersGo){
     versus.style.border = "2px dotted black";
     versus.style.padding = "20px";
     versus.style.borderRadius = "20px";
-    console.log(versus);
-
-
+    
        if (computersGo === playersGo){
         const draw = document.createElement('p');
         draw.classList.add('draw');
-        draw.textContent = "It's a draw!";
+        draw.textContent = "Round " + round + " - It's a draw!";
         result.appendChild(draw);
         playerScore++;
         computerScore++;
@@ -84,7 +84,7 @@ function playRound(computersGo, playersGo){
        else if (computersGo === "rock" && playersGo === "paper") {
         const pWin = document.createElement('p');
         pWin.classList.add('pWin');
-        pWin.textContent = "Player wins!";
+        pWin.textContent = "Round " + round + " - Player wins!";
         pWin.style.color = "green";
         pWin.style.fontWeight = "900";
         result.appendChild(pWin);
@@ -95,7 +95,7 @@ function playRound(computersGo, playersGo){
         else if (computersGo === "paper" && playersGo === "rock") {
           const cWin = document.createElement('p');
           cWin.classList.add('pWin');
-          cWin.textContent = "Computer wins!";
+          cWin.textContent = "Round " + round + " - Computer wins!";
           cWin.style.color = "red";
           cWin.style.fontWeight = "900";
           result.appendChild(cWin);
@@ -105,7 +105,7 @@ function playRound(computersGo, playersGo){
         else if (computersGo === "scissors" && playersGo === "rock") {
           const pWin = document.createElement('p');
           pWin.classList.add('pWin');
-          pWin.textContent = "Player wins!";
+          pWin.textContent = "Round " + round + " - Player wins!";
           pWin.style.color = "green";
           pWin.style.fontWeight = "900";
           result.appendChild(pWin);
@@ -115,7 +115,7 @@ function playRound(computersGo, playersGo){
         else if (computersGo === "rock" && playersGo === "scissors") {
           const cWin = document.createElement('p');
           cWin.classList.add('pWin');
-          cWin.textContent = "Computer wins!";
+          cWin.textContent = "Round " + round + " - Computer wins!";
           cWin.style.color = "red";
           cWin.style.fontWeight = "900";
           result.appendChild(cWin);
@@ -125,7 +125,7 @@ function playRound(computersGo, playersGo){
         else if (computersGo === "paper" && playersGo === "scissors") {
           const pWin = document.createElement('p');
           pWin.classList.add('pWin');
-          pWin.textContent = "Player wins!";
+          pWin.textContent = "Round " + round + " - Player wins!";
           result.appendChild(pWin);
           pWin.style.color = "green";
           pWin.style.fontWeight = "900";
@@ -135,7 +135,7 @@ function playRound(computersGo, playersGo){
           else if (computersGo === "scissors" && playersGo === "paper") {
             const cWin = document.createElement('p');
             cWin.classList.add('pWin');
-            cWin.textContent = "Computer wins!";
+            cWin.textContent = "Round " + round + " - Computer wins!";
             cWin.style.color = "red";
             cWin.style.fontWeight = "900";
             result.appendChild(cWin);
